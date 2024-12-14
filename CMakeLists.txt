@@ -11,11 +11,15 @@ include_directories(include)
 set(SOURCES
     src/main.cpp
     src/TMDBTool.cpp
+    src/HTTPClient.cpp
 )
 
 include_directories(include)
 # Define the executable
 add_executable(TMDBTool ${SOURCES})
+
+find_package(CURL REQUIRED)
+target_link_libraries(TMDBTool PRIVATE CURL::libcurl)
 
 find_package(nlohmann_json REQUIRED)
 target_link_libraries(TMDBTool PRIVATE nlohmann_json::nlohmann_json)
