@@ -49,3 +49,7 @@ Thumbs.db
 *.bak
 *.old
 *.orig
+
+# Enviroment viriables
+
+.env
