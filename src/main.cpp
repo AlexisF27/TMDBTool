@@ -10,19 +10,8 @@ int main(int argc, char* argv[])
 {
   try
   {
-    cout << "Loading environment variables from .env file..." << endl;
     loadEnvFile("../build/.env");
-    cout << "Checking environment variables..." << endl;
-    extern char **environ; 
-    for (char **env = environ; *env != 0; env++) { 
-      cout << *env << endl; 
-      } 
     const char* apiKey = getenv("TMDB_API_KEY"); 
-    if (apiKey) { 
-      cout << "API Key: " << apiKey << endl; 
-    } else { 
-      cerr << "Error: API Key not set" << endl; 
-    }
 
     cout << "Checking command line arguments..." << endl;
     
