@@ -10,6 +10,8 @@ class TMDBTool
 public:
   TMDBTool();
   ~TMDBTool();
+  string fetchtTypeTMDBTool(const string& type);
+  void processApiResponse(const string& response);
 };
 
 #endif
