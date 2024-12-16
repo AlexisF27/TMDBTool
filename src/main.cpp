@@ -34,7 +34,9 @@ int main(int argc, char* argv[])
 
     if (type == "playing" || type == "popular" || type == "top" || type == "upcoming")
     {
-      /* TODO */
+      TMDBTool tmdbTool;
+      string response = tmdbTool.fetchtTypeTMDBTool(type);
+      tmdbTool.processApiResponse(response);
     }else{
       cerr << "Error: Invalid type.\n";
       cerr << "Usage: tmdb-app --type <type>\n";

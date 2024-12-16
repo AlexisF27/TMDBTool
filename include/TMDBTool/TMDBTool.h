@@ -12,6 +12,9 @@ public:
   ~TMDBTool();
   string fetchtTypeTMDBTool(const string& type);
   void processApiResponse(const string& response);
+private:
+  string apiKey;
+  void transformType(string& type);
 };
 
 #endif
