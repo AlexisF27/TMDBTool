@@ -12,14 +12,22 @@ set(SOURCES
     src/main.cpp
     src/TMDBTool.cpp
     src/HTTPClient.cpp
+    src/EnvLoader.cpp
 )
 
-include_directories(include)
 # Define the executable
 add_executable(TMDBTool ${SOURCES})
 
+# Link libraries
 find_package(CURL REQUIRED)
-target_link_libraries(TMDBTool PRIVATE CURL::libcurl)
-
 find_package(nlohmann_json REQUIRED)
-target_link_libraries(TMDBTool PRIVATE nlohmann_json::nlohmann_json)
+
+# Link the dotenv library, assuming it's correctly named
+target_link_libraries(TMDBTool
+    CURL::libcurl
+    nlohmann_json::nlohmann_json
+)
+
+target_include_directories(TMDBTool PRIVATE lib/dotenv/include)
+
+set(CMAKE_BUILD_TYPE Debug)
