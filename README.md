@@ -3,6 +3,11 @@
 ## Overview
 TMDBTool is a command-line application that interacts with the The Movie Database (TMDB) API to retrieve movie information based on categories like "Now Playing," "Popular," "Top Rated," and "Upcoming."
 
+# Project URL
+```bash
+https://roadmap.sh/projects/tmdb-cli
+```
+
 ## Features
 - Fetch movie data from the TMDB API.
 - Support for multiple movie categories.
@@ -66,3 +71,58 @@ This command retrieves a list of movies currently "Now Playing" from the TMDB AP
 ```bash
   ./TMDBTool --type playing
 ```
+
+## Project Structure: 
+```bash
+TMDBTool/
+├── include/
+│   ├── EnvLoader/
+│   │   ├── EnvLoader.h
+│   ├── TMDBTool/
+│       ├── TMDBTool.h
+├── src/
+│   ├── main.cpp
+│   ├── TMDBTool.cpp
+│   ├── HTTPClient.cpp
+│   ├── EnvLoader.cpp
+├── .env               # File containing your TMDB API key
+├── CMakeLists.txt     # Build configuration
+└── README.md
+```
+
+## CMake Configuration | Dependecies
+
+The project uses CMake to manage dependencies:
+- libcurl: For HTTP requests.
+- nlohmann/json: For JSON parsing.
+Dependencies are found and linked automatically using find_package in CMakeLists.txt:
+
+```bash
+# Find and link libraries
+find_package(CURL REQUIRED)
+find_package(nlohmann_json REQUIRED)
+
+# Link libraries to the target executable
+target_link_libraries(TMDBTool
+    CURL::libcurl
+    nlohmann_json::nlohmann_json
+)
+```
+
+## Environment Variables
+The .env file is used to store the TMDB API Key securely. The EnvLoader module reads this file and sets the environment variable:
+
+- **.env** File Example:
+```bash
+TMDB_API_KEY=your_tmdb_api_key_here
+```
+
+The program reads the environment variable using getenv:
+
+```bash
+const char* apiKey = getenv("TMDB_API_KEY");
+```
+
+## License
+This project is licensed under the MIT License. See LICENSE for more details.
+
