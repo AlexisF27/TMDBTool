@@ -43,3 +43,26 @@ make
 ```bash
 ./TMDBTool --type <type>
 ```
+
+## Usage
+
+- Command Syntax
+
+  ```bash
+   ./TMDBTool --type <type>
+  ```
+
+
+## Parameters:
+- --type <type>: Specifies the category of movies to fetch.
+  - **playing** → Fetches "Now Playing" movies.
+  - **popular** → Fetches "Popular" movies.
+  - **top** → Fetches "Top Rated" movies.
+  - **upcoming** → Fetches "Upcoming" movies.
+
+
+## Example:
+This command retrieves a list of movies currently "Now Playing" from the TMDB API.
+```bash
+  ./TMDBTool --type playing
+```
