@@ -18,7 +18,6 @@ TMDBTool::TMDBTool() {
   } else { 
     throw runtime_error("TMDB_API_KEY environment variable not set"); 
   }
-
 }
 
 TMDBTool::~TMDBTool() {
